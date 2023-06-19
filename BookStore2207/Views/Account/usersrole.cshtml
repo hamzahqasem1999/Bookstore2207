@@ -1,0 +1,49 @@
+﻿@model List<userroles>
+@{
+    Layout = "~/views/shared/LayoutPage.cshtml";
+
+}
+
+@section body
+
+{
+    <form method="post">
+
+        <div class="card col-xs-6" style="margin-top:20px">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h5> @ViewData["name"]</h5>
+                </div>
+                <div class="panel-body">
+
+
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <div>
+                            <input type="hidden" asp-for="@Model[i].userid" />
+                            <input type="hidden" asp-for="@Model[i].roleid" />
+                            <input type="hidden" asp-for="@Model[i].rolename" />
+                            <input type="checkbox" asp-for="@Model[i].isselected" />
+                            <label>
+                                @Model[i].rolename
+                            </label>
+                        </div>
+                    }
+
+
+
+                </div>
+                <div class="panel-footer">
+
+                    <input type="submit" value="Update" class="btn btn-primary" asp-action="updateuserrole" />
+
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+    </form>
+}

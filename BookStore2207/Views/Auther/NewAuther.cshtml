@@ -1,0 +1,161 @@
+﻿@model VmAuther
+
+@{
+
+    Layout = "~/views/shared/LayoutPage.cshtml";
+}
+
+@section head
+{
+    @*<script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#liedit").click(function () {
+
+
+                var autherId = $(this).parent().parent().find(".AutherId").text()
+                $.ajax({
+
+                    type: 'get',
+                    url: '/BookStore2207/Auther/edit?id=' + autherId,
+                    success: function (data) {
+                        $("#txtfirstname").val(data.name)
+
+                    },
+                    error: function () {
+
+                        alert("error")
+                    }
+                })
+                $("#Authermodel").modal('show')
+            });
+        });
+    </script>*@
+
+    <style>
+       body{
+            background-image:url('wwwroot/css/Nineteenth.jpg');
+        }
+    </style>
+
+    }
+
+
+@section body
+
+{
+
+
+
+    <form method="post" enctype="multipart/form-data">
+
+        <div class="row">
+            <div class="col-sm-12 col-md-12 well Boxmargin">
+                <h1>Auther Section</h1>
+            </div>
+        </div>
+        @*<span id="s"> Welcome To HR System </span>*@
+        <div class="container" style="width: 975px; position: fixed; margin-top: 20px;">
+            <div class=" row" style="margin-top:20px">
+                <input type="hidden" asp-for="auther.Id" />
+                <div class="col-xs-1">
+
+                    <span> FirstName</span>
+
+                </div>
+                <div class="col-xs-5">
+
+                    <input type="text" class="form-control" asp-for="auther.firstname" />
+
+                </div>
+            </div>
+            <div class=" row" style="margin-top:20px">
+                <div class="col-xs-1">
+
+                    <span> Lastname</span>
+
+                </div>
+                <div class="col-xs-5">
+
+                    <input type="text"class="form-control" asp-for="auther.lastname" />
+
+                </div>
+            </div>
+
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-1">
+
+                    <span>Nationality</span>
+
+                </div>
+                <div class="col-xs-5">
+
+                    @*<select class="form-control" asp-for="Nationality">
+
+                </select>*@
+
+                    <input type="text" class="form-control" asp-for="auther.Nationality" />
+
+                </div>
+            </div>
+
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-1">
+
+                    <span> Profile Picture </span>
+
+                </div>
+                <div class="col-xs-5">
+
+                    <label for="fu1" class="btn btn-primary">Upload</label>
+
+                    <input type="file" id="fu1" style="display:none" asp-for="auther.image" />
+                    @*<input type="hidden" asp-for="employee.path" />
+                <input type="file" asp-for="employee.image" />
+                <span asp-validation-for="employee.image"></span>*@
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+
+            <div class=" row" style="margin-top:250px">
+
+                <div class="col-xs-3" style="margin-left: 500px">
+
+                    @if ((bool)ViewData["IsEdited"] == false)
+                    {<input type="submit" value="save" class="btn btn-primary" asp-action="save" />}
+                    else
+                    { <input type="submit" value="update" class="btn btn-primary" asp-action="update" />}
+
+                </div>
+            </div>
+        
+
+
+
+
+
+
+
+       
+
+
+        
+        
+
+      
+
+    </form>
+
+
+
+}
+

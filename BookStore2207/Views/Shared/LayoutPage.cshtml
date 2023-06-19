@@ -1,0 +1,143 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Applicationuser> signinmanger
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="~/bootstrap/dist/js/bootstrap.js"></script>
+    <link href="~/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <title>LayoutPage</title>
+    @RenderSection("head", false)
+    <style>
+
+        #s {
+            font-size: 30px;
+            font-family: emoji;
+            margin-left: 475px;
+            font-weight: bold;
+        }
+    </style>
+
+
+</head>
+<body >
+    <div class=" container-fluid">
+
+        <div class="row">
+            <div class="col-xs-12">
+                <nav class="navbar-inverse">
+                    <div class="navbar-brand">
+
+                        BookStore
+
+                    </div>
+                    <div class="navbar-header">
+
+
+                        <button type="button" class="navbar-toggle" data-target="#menu1" data-toggle="collaps">
+
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+
+
+                        </button>
+
+                    </div>
+                    <div id="menu1" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            @*@if (signinmanger.IsSignedIn(User))
+                            {*@
+
+                                <li>
+                                    <a asp-controller="Bookstore" asp-action="Index"> NewBook </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Bookstore" asp-action="booksearch">Booklist </a>
+                                </li>
+
+
+                                @*@if (User.IsInRole("Admin"))
+                                {*@
+                                    <li>
+                                        <a asp-controller="Auther" asp-action="Index"> NewAuther </a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Auther" asp-action="authsearch"> Autherlist   </a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Catgory" asp-action="Index"> NewCatgory   </a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Catgory" asp-action="categsearch">Catgorylist </a>
+                                    </li>                                  
+
+                                    <li>
+                                        <a asp-controller="Account" asp-action="newrole"> Newrole </a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Account" asp-action="getusers"> GetUsers </a>
+                                    </li>
+                                @*}
+
+
+                            }*@
+                        </ul>
+
+                        <ul class=" nav navbar-nav navbar-right">
+                            @if (signinmanger.IsSignedIn(User))
+                            {
+                                <li style="color:white">
+
+                                    @User.Identity.Name
+
+                                </li>
+                                <li>
+                                    <a asp-controller="Account" asp-action="Logout"><span class="glyphicon glyphicon-log-out"> logout</span></a>
+
+                                </li>
+                            }
+                            else
+                            {
+
+                                <li>
+                                    <a asp-controller="Account" asp-action="Login"> <span class="glyphicon glyphicon-log-in"> login</span> </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Account" asp-action="Index"> <span class="glyphicon glyphicon-user"> CreateAccount</span> </a>
+                                </li>
+                            }
+
+                        </ul>
+
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+
+                @RenderSection("body")
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</body>
+</html>
+

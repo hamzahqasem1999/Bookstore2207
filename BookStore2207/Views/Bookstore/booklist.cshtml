@@ -1,0 +1,88 @@
+﻿
+@model List<Bookstore>
+@{
+    Layout = "~/views/shared/LayoutPage.cshtml";
+
+}
+
+@section body
+
+{
+
+    <form method="post">
+        <span id="s"> Welcome To Book </span>
+        <div class="container" style="width: 975px; position: fixed; margin-top: 20px;">
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-2">
+
+                    <span>booktitle </span>
+
+                </div>
+                <div class="col-xs-4">
+
+                    <input type="text" name="booktitle" />
+
+                </div>
+
+                <div class="col-xs-2">
+
+                    <input type="submit" value="search" class="btn btn-primary" asp-action="search" />
+
+                </div>
+
+            </div>
+
+
+
+            <div class="row" style="margin-top:20px">
+
+                <table class=" table  table-hover ">
+                    <thead>
+                        <tr>
+                            <th> Image </th>
+                            <th>booktitle </th>
+                            <th> year</th>
+                            <th> prise </th>
+                            <th> stock</th>
+                            <th>option</th>
+
+                        </tr>
+
+                    </thead>
+                    <tbody>
+
+
+                        @foreach (Bookstore item in Model)
+
+                        {
+                            <tr>
+                                <td style="width: 10px;"><img src="~/StaticFiles/@item.path" style="width:30px" /> </td>
+                                <td>@item.booktitle </td>
+                                <td>@item.year</td>
+                                <td>@item.prise </td>
+                                <td>@item.stock</td>
+                                <td>
+
+                                    <input type="submit" class="btn btn-success" value="edit" asp-controller="employee" asp-action="edit" asp-route-id="@item.Id" />
+                                    <input type="submit" class="btn btn-danger" value="delete" asp-action="delete" asp-route-id="@item.Id" />
+
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+
+
+
+            </div>
+
+
+
+
+        </div>
+    </form>
+}

@@ -1,0 +1,170 @@
+﻿@model vmbook
+
+
+@{
+
+    Layout = "~/views/shared/LayoutPage.cshtml";
+}
+
+@*@section head
+{*@
+    @*<script type="text/javascript">
+
+            $(document).ready(function () {
+
+                $("#ddlcountry").change(function () {
+
+
+
+                    $.ajax({
+
+                        type: 'get',
+                        url: '/HRDepartment/employee/loadcity?country_id=' + $("#ddlcountry").val(),
+                        success: function (data) {
+                            $("#ddlcity option").remove();
+                            $(data).each(function () {
+
+                                $('#ddlcity').append("<option value=" + $(this).prop('id') + ">" + $(this).prop('name') + "</option>");
+                            })
+                        },
+                        error: function (error) {
+
+                            alert("loading city error")
+                        },
+                    })
+                })
+            })
+        </script>*@
+
+@*}*@
+@section body
+
+{
+    <form method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 well Boxmargin">
+                <h1>Book Section</h1>
+            </div>
+        </div>
+        @*<span id="s"> Welcome To HR System </span>*@
+        <div class="container" style="width: 975px; position: fixed; margin-top: 20px;">
+            <div class=" row" style="margin-top:20px">
+                <input type="hidden" asp-for="bookstore.Id" />
+                <div class="col-xs-1">
+
+                    <span>booktitle</span>
+
+                </div>
+                <div class="col-xs-5">
+
+                    <input type="text" class="form-control" asp-for="bookstore.booktitle" />
+
+                </div>
+            </div>
+            <div class=" row" style="margin-top:20px">
+                <div class="col-xs-1">
+                    <span> year</span>
+
+                </div>
+                <div class="col-xs-5">
+
+                    <input type="text" class="form-control" asp-for="bookstore.year" />
+
+                </div>
+            </div>
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-1">
+
+                    <span>prise</span>
+
+                </div>
+                <div class="col-xs-5">
+
+                    <input type="text" class="form-control" asp-for="bookstore.prise" />
+
+                </div>
+
+            </div>
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-1">
+
+                    <span>category</span>
+
+                </div>
+                <div class="col-xs-5">
+
+                    <select class="form-control" asp-for="bookstore.category_Id" asp-items='new SelectList(Model.licategories ,"Id","Name") '>
+                    </select>
+
+                </div>
+
+
+            </div>
+
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-1">
+
+                    <span>Auther </span>
+
+                </div>
+                <div class="col-xs-5">
+
+                    <select class="form-control" asp-for="bookstore.auther_Id" asp-items='new SelectList(Model.liAuther,"Id","firstname") '>
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-1">
+
+                    <span> Profile Picture </span>
+
+                </div>
+                <div class="col-xs-5">
+
+                    <label for="fu1" class="btn btn-primary">Upload</label>
+
+                    <input type="file" id="fu1" style="display:none" asp-for="bookstore.image" />
+                    @*<input type="hidden" asp-for="employee.path" />
+                    <input type="file" asp-for="employee.image" />
+                    <span asp-validation-for="employee.image"></span>*@
+                </div>
+
+            </div>
+
+
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-1">
+                    <span>stock </span>
+                </div>
+
+                <div class="col-xs-5">
+
+                    <input type="text" class="form-control" asp-for="bookstore.stock" />
+
+                </div>
+            </div>
+            <div class=" row" style="margin-top:10px">
+
+                <div class="col-xs-3" style="margin-left: 727px">
+                    @if ((bool)ViewData["IsEdited"] == false)
+                    {<input type="submit" value="save" class="btn btn-primary" asp-action="save" />}
+                    else
+                    { <input type="submit" value="update" class="btn btn-primary" asp-action="update" />}
+
+
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+}

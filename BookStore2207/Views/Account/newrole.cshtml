@@ -1,0 +1,42 @@
+﻿@model rolemodel
+@{
+
+    Layout = "~/views/shared/LayoutPage.cshtml";
+
+}
+
+
+@section body
+{
+    <form method="post">
+        <span id="s"> Welcome To HR System </span>
+        <div class="container" style="width: 975px; position: fixed; margin-top: 20px;">
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-1">
+                    <div class="form-group">
+                        <span> Name</span>
+
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <input type="text" class="form-control" asp-for="name" />
+                    <span asp-validation-for="name"></span>
+                </div>
+
+            </div>
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-1">
+                    <div style=" margin-left: 320px">
+                        <input type="submit" value="save" class="btn btn-primary" asp-action="addrole" />
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+
+}

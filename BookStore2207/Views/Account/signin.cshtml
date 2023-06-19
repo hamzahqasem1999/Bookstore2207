@@ -1,0 +1,71 @@
+﻿@model signinmodel
+
+@{
+
+    Layout = "~/views/shared/LayoutPage.cshtml";
+
+}
+
+@section body
+
+{
+    <form method="post">
+        <span id="s"> Welcome To HR System </span>
+        <div class="container" style="width: 975px; position: fixed; margin-top: 20px;">
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-1">
+
+                    <span> UserName</span>
+
+                </div>
+                <div class="col-xs-3">
+
+                    <input type="text" class="form-control" asp-for="username" />
+
+                </div>
+
+            </div>
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-1">
+
+                    <span> Password</span>
+
+                </div>
+                <div class="col-xs-3">
+
+                    <input type="password" class="form-control" asp-for="password" />
+
+                </div>
+            </div>
+            <div><span> @ViewData["messege"]</span></div>
+
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-1">
+
+                    <input type="checkbox" asp-for="rememberme" />
+
+                </div>
+                <div class="col-xs-2">
+
+                    <span> Remember me</span>
+
+                </div>
+            </div>
+            <div class=" row" style="margin-top:15px">
+
+
+                <div class="col-xs-3" style="margin-left: 235px">
+
+                    <input type="submit" value="login" class="btn btn-primary" asp-action="checkpassword" />
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </form>
+}
